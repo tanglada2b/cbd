@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chanvre CBD – Split Layout</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0; height: 100%; overflow: hidden;
+      background-color: #FDF9F1;
+    }
+    iframe {
+      border: none; margin: 0; padding: 0;
+    }
+    #leftFrame {
+      position: fixed; top: 0; left: 0;
+      width: 33.33vw; height: 100vh;
+    }
+    #rightFrame {
+      position: fixed; top: 0; left: 33.33vw;
+      width: 66.67vw; height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="leftFrame" src="left.html"></iframe>
+  <iframe id="rightFrame" src="right.html"></iframe>
+</body>
+</html>
