@@ -1,36 +1,213 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Chanvre CBD – Fleurs et Tisanes Bio</title>
-  <meta name="description" content="Variétés de fleurs CBD bio et tisanes bien‑être, issues d’une production locale artisanale.">
-  <meta name="keywords" content="fleur de cbd, fleurs de chanvre, tisane cbd, chanvre bio, achat en ligne">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    html, body { margin:0; padding:0; height:500vh; overflow-x:hidden; overflow-y:scroll; background:#FDF9F1; font-family:sans-serif; }
-    .scroller { position:fixed; top:0; left:0; height:100vh; width:calc(5*100vw); display:flex; flex-direction:row; }
-    .section { width:100vw; height:100vh; box-sizing:border-box; padding:40px; background:rgba(255,255,255,0.8); }
-    h1, h2 { color:#8B5E3C; font-family:'Playfair Display',serif; }
-    .flowers-grid, .tisanes-grid { display:flex; flex-wrap:wrap; gap:20px; }
-    .thumb { width:calc(20% - 20px); cursor:pointer; text-align:center; }
-    .thumb img { width:100%; border-radius:6px; }
-    /* Modal */
-    #modal { display:none; position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6); justify-content:center; align-items:center; }
-    #modal img { max-width:80%; max-height:80%; border-radius:8px; }
+<meta charset="utf-8"/>
+<title>Chanvre CBD - Catalogue</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<style>
+    html, body {
+      margin: 0; padding: 0; height: 600vh;
+      overflow-x: hidden; overflow-y: scroll;
+      font-family: 'Playfair Display', serif;
+      background-color: #FDF9F1;
+    }
+    .scroller {
+      position: fixed; top: 0; left: 0;
+      height: 100vh; width: calc(6 * 100vw);
+      display: flex; flex-direction: row;
+      will-change: transform;
+    }
+    .section {
+      width: 100vw; height: 100vh;
+      box-sizing: border-box;
+      display: flex; flex-direction: column;
+      align-items: center; padding: 40px;
+      background-color: #FDF9F1;
+    }
+    .title {
+      font-size: 48px; color: #8B5E3C; margin-bottom: 20px;
+    }
+    .flowers-grid {
+      display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
+      max-width: 90%; margin-bottom: 20px;
+    }
+    .flower-thumb {
+      width: calc(20% - 20px);
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      color: #405B41;
+      font-size: 16px;
+    }
+    .flower-thumb:hover {
+      border-color: #8B5E3C;
+    }
+    .flower-thumb img {
+      width: 100%; height: auto; border-radius: 6px;
+    }
+    form {
+      display: flex; flex-direction: column; width: 60%; max-width: 500px;
+    }
+    input, textarea {
+      padding: 10px; margin-bottom: 10px; width: 100%;
+      font-size: 16px;
+    }
+    button {
+      padding: 12px 20px;
+      background-color: #7B9C63;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .content-text {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      color: #405B41;
+      max-width: 80%;
+      text-align: center;
+    }
+    #modal {
+      display: none; position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%; background: rgba(0,0,0,0.6);
+      justify-content: center; align-items: center; z-index: 10;
+      flex-direction: column;
+    }
+    #modal img {
+      max-width: 80%; max-height: 80%; border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    #modalInfo {
+      color: white; font-family: Arial, sans-serif;
+      margin-top: 10px; font-size: 20px;
+    }
   </style>
 </head>
 <body>
-  <div class="scroller" id="scroller">
-    <div class="section" id="accueil"><h1>Accueil</h1></div>
-    <div class="section" id="fleurs"><h2>Variétés de Fleurs</h2></div>
-    <div class="section" id="tisanes"><h2>Tisanes</h2></div>
-    <div class="section" id="contact"><h2>Contact</h2></div>
-    <div class="section" id="cgv"><h2>CGV</h2></div>
-  </div>
-  <script>
-    window.addEventListener('scroll', () => { 
-      const y = window.scrollY; 
-      document.getElementById('scroller').style.transform = 'translateX(-' + y*(window.innerWidth/window.innerHeight) + 'px)'; 
+<div class="scroller" id="scroller">
+<div class="section">
+<div class="title">Accueil</div>
+<div class="content-text">Bienvenue sur notre site Chanvre CBD.</div>
+</div>
+<div class="section">
+<div class="title">Bienvenue</div>
+<div class="content-text" style="max-width: 80%; font-size: 20px; line-height: 1.6;">
+<p><strong>Bienvenue chez Chanvre CBD.</strong></p>
+<p>Installés au cœur de la Corse, nous cultivons avec soin et engagement nos variétés de chanvre pour vous proposer des fleurs et des infusions de qualité, naturellement riches en bienfaits.</p>
+<p>Notre savoir-faire paysan, respectueux de la nature et des cycles biologiques, vous garantit un produit authentique, local, et conforme à la réglementation européenne.</p>
+<p>Explorez nos variétés, découvrez nos tisanes artisanales, et laissez-vous porter par un bien-être venu directement des terres corses.</p>
+</div>
+<div class="flowers-grid" style="margin-top: 40px;">
+<div class="flower-thumb">
+<img alt="Fleurs de CBD" src="skittles-indoor-cbd.webp"/>
+<div>Découvrir nos fleurs</div>
+</div>
+<div class="flower-thumb">
+<img alt="Tisanes CBD" src="infusion-bio-moment-detente.webp"/>
+<div>Voir nos tisanes</div>
+</div>
+<div class="flower-thumb">
+<img alt="Carte contact" src="carte-corse-contact-fond-site.png"/>
+<div>Nous contacter</div>
+</div>
+</div>
+</div>
+<div class="section">
+<div class="title">Variétés de Fleurs</div>
+<div class="flowers-grid"><div class="flower-thumb" data-price="11" data-title="Skittles Indoor">
+<img alt="Skittles Indoor" src="skittles-indoor-cbd.webp"/>
+<div>Skittles Indoor<br/>11 €/g</div></div>
+<div class="flower-thumb" data-price="12" data-title="Kama Kush">
+<img alt="Kama Kush" src="kama-kush-cbd-premium.webp"/>
+<div>Kama Kush<br/>12 €/g</div></div>
+<div class="flower-thumb" data-price="10" data-title="Green Crack">
+<img alt="Green Crack" src="green-crack-fleur-cbd-premium.webp"/>
+<div>Green Crack<br/>10 €/g</div></div>
+<div class="flower-thumb" data-price="9" data-title="Auto Diesel">
+<img alt="Auto Diesel" src="auto-diesel-cbd-premium.webp"/>
+<div>Auto Diesel<br/>9 €/g</div></div>
+<div class="flower-thumb" data-price="13" data-title="Jack Herer">
+<img alt="Jack Herer" src="jack-herer-cbd.webp"/>
+<div>Jack Herer<br/>13 €/g</div></div>
+<div class="flower-thumb" data-price="10" data-title="Amnesia Haze">
+<img alt="Amnesia Haze" src="amnesia-haze-cbd.webp"/>
+<div>Amnesia Haze<br/>10 €/g</div></div>
+<div class="flower-thumb" data-price="11" data-title="Royal Purple Haze">
+<img alt="Royal Purple Haze" src="royal-purple-haze-cbd.webp"/>
+<div>Royal Purple Haze<br/>11 €/g</div></div></div>
+</div>
+<div class="section">
+<div class="title">Tisanes</div>
+<div class="flowers-grid"><div class="flower-thumb" data-price="6" data-title="Moment Détente">
+<img alt="Moment Détente" src="infusion-bio-moment-detente.webp"/>
+<div>Moment Détente<br/>6 €/sachet</div></div>
+<div class="flower-thumb" data-price="7" data-title="Après Repas">
+<img alt="Après Repas" src="infusion-bio-au-cbd-apres-repas-50gr.webp"/>
+<div>Après Repas<br/>7 €/sachet</div></div>
+<div class="flower-thumb" data-price="6" data-title="Maté Vitalité">
+<img alt="Maté Vitalité" src="mate-vitalithe-infusion-bio-au-cbd50gr.webp"/>
+<div>Maté Vitalité<br/>6 €/sachet</div></div>
+<div class="flower-thumb" data-price="8" data-title="Rooibos L'Exotique">
+<img alt="Rooibos L'Exotique" src="rooibos-l-exotique-bio-infusion-au-cbd-50gr.webp"/>
+<div>Rooibos L'Exotique<br/>8 €/sachet</div></div></div>
+</div>
+<div class="section">
+<div class="title">Contact</div>
+<img alt="Carte de Corse" src="carte-corse-contact-fond-site.png" style="max-width: 400px; margin-bottom: 20px;"/>
+<form>
+<input placeholder="Votre nom" type="text"/>
+<input placeholder="Votre email" type="email"/>
+<textarea placeholder="Votre message" style="height: 120px;"></textarea>
+<button type="submit">Envoyer</button>
+</form>
+</div>
+<div class="section">
+<div class="title">Conditions Générales de Vente</div>
+<div class="content-text" style="text-align:left; max-width: 80%; font-size: 15px; line-height: 1.4;">
+<h3>Conditions Générales de Vente (CGV)</h3>
+<p>Les présentes Conditions Générales de Vente (CGV) régissent les ventes de produits de l'entreprise. Tous les produits sont conformes à la législation française et européenne.</p>
+<h4>1. Produits</h4>
+<p>Les produits proposés sont légaux, à base de chanvre avec un taux de THC inférieur à 0,3 %.</p>
+<h4>2. Commandes</h4>
+<p>Toute commande vaut acceptation des présentes CGV.</p>
+<h4>3. Paiement</h4>
+<p>Le paiement s’effectue en ligne par carte bancaire, PayPal ou virement.</p>
+<h4>4. Livraison</h4>
+<p>Les délais sont indicatifs. La responsabilité du vendeur ne peut être engagée en cas de retard.</p>
+<h4>5. Rétractation</h4>
+<p>Le client dispose d’un délai de 14 jours pour exercer son droit de rétractation.</p>
+<h4>6. Données personnelles</h4>
+<p>Les données sont traitées conformément au RGPD. Le client dispose d’un droit d’accès, de rectification et de suppression.</p>
+<h4>7. Litiges</h4>
+<p>Tout litige sera porté devant les tribunaux compétents.</p>
+</div>
+</div>
+</div>
+<div id="modal" onclick="closeModal()">
+<img alt="" id="modalImg" src=""/>
+<div id="modalInfo"></div>
+</div>
+<script>
+    window.addEventListener('scroll', function() {
+      var y = window.scrollY;
+      var x = y * window.innerWidth / window.innerHeight;
+      document.getElementById('scroller').style.transform = 'translateX(-' + x + 'px)';
+    });
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+    document.querySelectorAll('.flower-thumb').forEach(function(el) {
+      el.addEventListener('click', function() {
+        const src = el.querySelector('img').getAttribute('src');
+        const name = el.getAttribute('data-title');
+        const price = el.getAttribute('data-price');
+        document.getElementById('modalImg').src = src;
+        document.getElementById('modalInfo').textContent = name + ' - ' + price + (price.includes('€') ? '' : ' €');
+        document.getElementById('modal').style.display = 'flex';
+      });
     });
   </script>
 </body>
