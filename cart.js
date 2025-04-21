@@ -4,9 +4,13 @@ let cart = [];
 function updateCartDisplay() {
   const cartItems = document.getElementById("cart-items");
   cartItems.innerHTML = "";
+  if (cart.length === 0) {
+    cartItems.innerHTML = "<em>Votre panier est vide</em>";
+    return;
+  }
   cart.forEach(item => {
     const row = document.createElement("div");
-    row.textContent = item.name + " x " + item.qty;
+    row.textContent = `${item.name} x ${item.qty} — ${item.price * item.qty} €`;
     cartItems.appendChild(row);
   });
 }
@@ -32,45 +36,47 @@ document.getElementById("checkout").addEventListener("click", () => {
     return;
   }
 
-  // Ici tu dois remplacer par tes vrais price_id Stripe
-  const stripeLineItems = cart.map(item => ({
-    price: stripePriceId(item.id), // fonction de correspondance
+  if (window.netlifyIdentity) {
+    const user = window.netlifyIdentity.currentUser();
+    if (!user) {
+      alert("Vous devez être connecté pour finaliser votre commande.");
+      window.netlifyIdentity.open();
+      return;
+    }
+  }
+
+  const stripe = Stripe("pk_test_51RG1hpPNi5IY4eI8kOg2kg54Fx3SEgCKlKkkkgBmfkvPQY9snK8vG3i0xvpQAOH46D1uhV8TNHE7AK8UpX6fQ6Vu008a40id8u");
+
+  const lineItems = cart.map(item => ({
+    price: stripePriceId(item.id),
     quantity: item.qty
   }));
 
-  fetch("https://api.stripe.com/v1/checkout/sessions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      mode: "payment",
-      success_url: window.location.href,
-      cancel_url: window.location.href,
-      line_items: stripeLineItems
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    window.location.href = data.url;
-  })
-  .catch(err => alert("Erreur de paiement : " + err.message));
+  stripe.redirectToCheckout({
+    lineItems: lineItems,
+    mode: "payment",
+    successUrl: window.location.href,
+    cancelUrl: window.location.href
+  }).then(res => {
+    if (res.error) alert(res.error.message);
+  });
 });
 
-// Exemples de correspondance id produit → price_id Stripe
 function stripePriceId(productId) {
   const map = {
-    "skittles-indoor": "price_xxxxxx1",
-    "kama-kush": "price_xxxxxx2",
-    "green-crack": "price_xxxxxx3",
-    "auto-diesel": "price_xxxxxx4",
-    "jack-herer": "price_xxxxxx5",
-    "amnesia-haze": "price_xxxxxx6",
-    "royal-purple-haze": "price_xxxxxx7",
-    "moment-detente": "price_xxxxxx8",
-    "apres-repas": "price_xxxxxx9",
-    "mate-vitalite": "price_xxxxxx10",
-    "rooibos-l-exotique": "price_xxxxxx11"
+    // Fleurs
+    "skittles-indoor": "price_1FLEUR1",
+    "kama-kush": "price_1FLEUR2",
+    "green-crack": "price_1FLEUR3",
+    "auto-diesel": "price_1FLEUR4",
+    "jack-herer": "price_1FLEUR5",
+    "amnesia-haze": "price_1FLEUR6",
+    "royal-purple-haze": "price_1FLEUR7",
+    // Tisanes
+    "moment-detente": "price_1TISANE1",
+    "apres-repas": "price_1TISANE2",
+    "mate-vitalite": "price_1TISANE3",
+    "rooibos-l-exotique": "price_1TISANE4"
   };
-  return map[productId] || "price_xxxxxxxx";
+  return map[productId] || "price_xxxxx";
 }
