@@ -42,17 +42,15 @@
       width: 66.67vw; height: 100vh;
     }
   </style>
-<link href="favicon.ico" rel="icon" type="image/x-icon"/><script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script></head>
-<body><button onclick="netlifyIdentity.open()" style="position:fixed;top:20px;left:20px;padding:10px;background:#7B9C63;color:white;border:none;border-radius:6px;cursor:pointer;z-index:999;">Connexion / Inscription</button>
+<link href="favicon.ico" rel="icon" type="image/x-icon"/><script>
+if (window.innerWidth <= 768) {
+  window.location.href = "mobile.html";
+} else {
+  window.location.href = "right.html";
+}
+</script></head>
+<body>
 <iframe id="leftFrame" src="left.html"></iframe>
 <iframe id="rightFrame" src="right.html"></iframe>
-<script>
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on("init", user => {
-    if (!user) {
-      window.netlifyIdentity.on("login", () => { document.location.href = "/"; });
-    }
-  });
-}
-</script></body>
+</body>
 </html>

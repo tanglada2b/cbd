@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chanvre CBD - Mobile</title>
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #FDF9F1;
+    }
+    section { padding: 30px 20px; border-bottom: 1px solid #ccc; }
+    h2 { font-size: 24px; color: #8B5E3C; }
+    .product {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .product img {
+      width: 80%; max-width: 300px;
+      border-radius: 6px;
+    }
+    .product-name {
+      font-weight: bold;
+      margin: 10px 0 5px;
+    }
+    .price { color: #405B41; }
+    .add-to-cart {
+      background: #7B9C63; color: white;
+      padding: 10px 20px; border: none;
+      border-radius: 6px; margin-top: 10px;
+    }
+    #cart-toggle {
+      position: fixed;
+      bottom: 20px; right: 20px;
+      background: #7B9C63; color: white;
+      padding: 10px 16px; border-radius: 50%;
+      border: none; font-size: 16px;
+      z-index: 100;
+    }
+    #cart-box {
+      display: none;
+      position: fixed; bottom: 70px; right: 10px;
+      background: white; border: 1px solid #ccc;
+      padding: 10px; width: 90%;
+      max-width: 320px;
+      border-radius: 6px; z-index: 99;
+    }
+    #cart-items { font-size: 14px; margin-bottom: 10px; }
+    #checkout {
+      background: #405B41; color: white;
+      border: none; padding: 10px; width: 100%;
+      border-radius: 4px; font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <section>
+    <h2>Bienvenue</h2>
+    <p>Nous cultivons nos fleurs et tisanes CBD au cœur de la Corse. Découvrez notre sélection naturelle, locale et artisanale.</p>
+  </section>
+
+  <section>
+    <h2>Fleurs de CBD</h2>
+    <div class="product">
+      <img src="skittles-indoor-cbd.webp" alt="Skittles">
+      <div class="product-name">Skittles Indoor</div>
+      <div class="price">11 €/g</div>
+      <button class="add-to-cart" data-id="skittles-indoor" data-name="Skittles Indoor" data-price="11">Ajouter au panier</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tisanes CBD</h2>
+    <div class="product">
+      <img src="infusion-bio-moment-detente.webp" alt="Moment Détente">
+      <div class="product-name">Moment Détente</div>
+      <div class="price">6 €/sachet</div>
+      <button class="add-to-cart" data-id="moment-detente" data-name="Moment Détente" data-price="6">Ajouter au panier</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <form>
+      <input type="text" placeholder="Votre nom">
+      <input type="email" placeholder="Votre email">
+      <textarea placeholder="Votre message" rows="4"></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>Conditions Générales de Vente</h2>
+    <p>Nos produits respectent la réglementation en vigueur (THC < 0,3 %). Livraison rapide. Paiement sécurisé. Droit de rétractation 14 jours.</p>
+  </section>
+
+  <button id="cart-toggle">🛒</button>
+  <div id="cart-box">
+    <div id="cart-items"><em>Panier vide</em></div>
+    <button id="checkout">Payer</button>
+  </div>
+
+  <script src="cart_mobile.js"></script>
+</body>
+</html>
