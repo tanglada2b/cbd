@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Paiement Stripe CBD</title>
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    body { font-family: Arial; padding: 40px; background-color: #FDF9F1; }
+    button { padding: 12px 20px; background-color: #7B9C63; color: white; border: none; border-radius: 6px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Paiement sécurisé avec Stripe</h2>
+  <button id="checkout-button">Payer maintenant</button>
+
+  <script>
+    var stripe = Stripe('pk_test_51RG1hpPNi5IY4eI8kOg2kg54Fx3SEgCKlKkkkgBmfkvPQY9snK8vG3i0xvpQAOH46D1uhV8TNHE7AK8UpX6fQ6Vu008a40id8u');
+
+    document.getElementById('checkout-button').addEventListener('click', function () {
+      stripe.redirectToCheckout({
+        lineItems: [{price: 'price_xxxx', quantity: 1}], // Remplacer par ton vrai price_id
+        mode: 'payment',
+        successUrl: window.location.origin + '/success.html',
+        cancelUrl: window.location.origin + '/cancel.html',
+      }).then(function (result) {
+        alert(result.error.message);
+      });
+    });
+  </script>
+</body>
+</html>
